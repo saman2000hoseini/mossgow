@@ -21,5 +21,6 @@ extra-files:
   - '.cfg'
   - '.rar'
   - '.dns'
-  - 'python9.3'
+  - 'python3.9'
+  - '.class'
 `
