@@ -45,7 +45,7 @@ func removeAllExtra(output string, extra []string) {
 			if len(subitems) == 0 || strings.Contains(path, "venv") {
 				os.RemoveAll(path)
 				paths := strings.Split(path, "/")
-				path = strings.Join(paths[:len(paths)-1], "/")
+				path = strings.Join(paths[:len(paths)-2], "/")
 				if path != "" && path != output {
 					removeAllExtra(path, extra)
 				}
@@ -56,7 +56,7 @@ func removeAllExtra(output string, extra []string) {
 			if !strings.Contains(item.Name(), ".") {
 				os.RemoveAll(path)
 				paths := strings.Split(path, "/")
-				path = strings.Join(paths[:len(paths)-1], "/")
+				path = strings.Join(paths[:len(paths)-2], "/")
 				if path != "" && path != output {
 					removeAllExtra(path, extra)
 				}
@@ -67,7 +67,7 @@ func removeAllExtra(output string, extra []string) {
 				if strings.Contains(item.Name(), extraFile) {
 					os.RemoveAll(path)
 					paths := strings.Split(path, "/")
-					path = strings.Join(paths[:len(paths)-1], "/")
+					path = strings.Join(paths[:len(paths)-2], "/")
 					if path != "" && path != output {
 						removeAllExtra(path, extra)
 					}
