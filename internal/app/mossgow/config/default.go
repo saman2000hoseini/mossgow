@@ -2,8 +2,9 @@ package config
 
 // nolint:lll
 const defaultConfig = `
-output-dir: './uploads'
+output-dir: 'uploads'
 input-dir: 'uploads.zip'
+moss-dir: './moss'
 extra-files: 
   - '.csv'
   - '.docx'
@@ -23,4 +24,13 @@ extra-files:
   - '.dns'
   - 'python3.9'
   - '.class'
+supported:
+  - '.go'
+  - '.py'
+  - '.java'
+  - '.c'
+  - '.cpp'
+  - '.cs'
+  - '.js'
+path-layers: 3
 `

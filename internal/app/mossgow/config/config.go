@@ -14,9 +14,12 @@ const (
 
 type (
 	Config struct {
+		PathLayers int      `mapstructure:"path-layers"`
 		OutputDir  string   `mapstructure:"output-dir"`
 		InputDir   string   `mapstructure:"input-dir"`
+		MossDir    string   `mapstructure:"moss-dir"`
 		ExtraFiles []string `mapstructure:"extra-files"`
+		Supported  []string `mapstructure:"supported"`
 	}
 )
 

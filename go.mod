@@ -3,7 +3,7 @@ module github.com/saman2000hoseini/mossgow
 go 1.16
 
 require (
-	github.com/gen2brain/go-unarr v0.1.1 // indirect
+	github.com/gen2brain/go-unarr v0.1.1
 	github.com/go-playground/universal-translator v0.17.0 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mholt/archiver/v3 v3.5.0

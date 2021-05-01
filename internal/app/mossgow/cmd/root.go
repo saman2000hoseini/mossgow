@@ -9,7 +9,7 @@ import (
 // NewRootCommand creates a new virtual-box root command.
 func NewRootCommand() *cobra.Command {
 	var root = &cobra.Command{
-		Use: "virtual-box",
+		Use: "mossgow",
 	}
 
 	cfg := config.Init()
