@@ -6,7 +6,7 @@ detect:
 	./moss -d uploads/*/*/* uploads/*/*/*
 
 build:
-	go build -ldflags $(LDFLAGS) ./cmd/mossgow
+	CGO_ENABLED=1 go build -ldflags $(LDFLAGS) ./cmd/mossgow
 
 install:
-	go install -ldflags $(LDFLAGS) ./cmd/mossgow
+	CGO_ENABLED=1 go install -ldflags $(LDFLAGS) ./cmd/mossgow

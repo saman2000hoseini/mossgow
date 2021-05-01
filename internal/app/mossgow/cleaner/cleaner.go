@@ -14,18 +14,16 @@ import (
 )
 
 type Cleaner struct {
-	ExtraFiles         []string
 	Layers             int
 	SupportedLanguages []string
 	Output             string
 	VisitedDirs        map[string]bool
 }
 
-func New(layers int, cfg config.Config) *Cleaner {
+func New(layers int, languages []string, cfg config.Config) *Cleaner {
 	return &Cleaner{
-		ExtraFiles:         cfg.ExtraFiles,
 		Layers:             layers,
-		SupportedLanguages: cfg.Supported,
+		SupportedLanguages: languages,
 		Output:             cfg.OutputDir,
 		VisitedDirs:        map[string]bool{},
 	}
@@ -122,7 +120,7 @@ func (c *Cleaner) removeChild(path string) {
 		path = strings.Join(paths[:len(paths)-1], "/")
 
 		if path != "" && path != "." && path != c.Output {
-			c.removeAllExtra(path)
+			c.removeExtra(path)
 		}
 	}
 }
@@ -184,39 +182,6 @@ func findAllFiles(root string) []string {
 	}
 
 	return files
-}
-
-func (c *Cleaner) removeAllExtra(dir string) {
-	items, _ := ioutil.ReadDir(dir)
-	if len(items) == 0 || strings.Contains(dir, "venv") {
-		c.removeChild(dir)
-
-		return
-	}
-
-	for _, item := range items {
-		path := fmt.Sprintf("%s/%s", dir, item.Name())
-		if item.IsDir() {
-			subitems, _ := ioutil.ReadDir(path)
-			if len(subitems) == 0 || strings.Contains(path, "venv") {
-				c.removeChild(path)
-			} else {
-				c.removeAllExtra(path)
-			}
-		} else {
-			if !strings.Contains(item.Name(), ".") {
-				c.removeChild(path)
-				continue
-			}
-
-			for _, extraFile := range c.ExtraFiles {
-				if strings.Contains(item.Name(), extraFile) {
-
-					continue
-				}
-			}
-		}
-	}
 }
 
 func (c *Cleaner) move(src string) error {
