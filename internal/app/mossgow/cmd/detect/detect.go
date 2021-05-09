@@ -49,11 +49,11 @@ func Register(root *cobra.Command, cfg config.Config) {
 		},
 	}
 
-	detectCmd.Flags().StringVarP(&baseFile, "base", "B", "", "To define common code file")
-	detectCmd.Flags().StringVarP(&input, "input", "I", cfg.InputDir, "To define input zip file")
-	detectCmd.Flags().StringVarP(&moss, "moss", "M", cfg.MossDir, "To define path to moss")
-	detectCmd.Flags().IntVarP(&pathLayers, "pathlayers", "P", cfg.PathLayers, "To define path layers")
-	detectCmd.Flags().StringSliceVarP(&languages, "languages", "L",
+	detectCmd.Flags().StringVarP(&baseFile, "base", "b", "", "To define common code file")
+	detectCmd.Flags().StringVarP(&input, "input", "i", cfg.InputDir, "To define input zip file")
+	detectCmd.Flags().StringVarP(&moss, "moss", "m", cfg.MossDir, "To define path to moss")
+	detectCmd.Flags().IntVarP(&pathLayers, "pathlayers", "p", cfg.PathLayers, "To define path layers")
+	detectCmd.Flags().StringSliceVarP(&languages, "languages", "l",
 		cfg.Supported, "To define supported languages")
 
 	root.AddCommand(detectCmd)
