@@ -41,20 +41,20 @@ func Register(root *cobra.Command, cfg config.Config) {
 
 	languages := []string{}
 
-	root.AddCommand(
-		&cobra.Command{
-			Use:   "detect",
-			Short: "detect software similarity",
-			Run: func(cmd *cobra.Command, args []string) {
-				main(input, moss, baseFile, pathLayers, languages, cfg)
-			},
+	detectCmd := &cobra.Command{
+		Use:   "detect",
+		Short: "detect software similarity",
+		Run: func(cmd *cobra.Command, args []string) {
+			main(input, moss, baseFile, pathLayers, languages, cfg)
 		},
-	)
+	}
 
-	root.Flags().StringVarP(&baseFile, "base", "B", "", "To define common code file")
-	root.Flags().StringVarP(&input, "input", "I", cfg.InputDir, "To define input zip file")
-	root.Flags().StringVarP(&moss, "moss", "M", cfg.MossDir, "To define path to moss")
-	root.Flags().IntVarP(&pathLayers, "pathlayers", "P", cfg.PathLayers, "To define path layers")
-	root.Flags().StringSliceVarP(&languages, "languages", "L",
+	detectCmd.Flags().StringVarP(&baseFile, "base", "B", "", "To define common code file")
+	detectCmd.Flags().StringVarP(&input, "input", "I", cfg.InputDir, "To define input zip file")
+	detectCmd.Flags().StringVarP(&moss, "moss", "M", cfg.MossDir, "To define path to moss")
+	detectCmd.Flags().IntVarP(&pathLayers, "pathlayers", "P", cfg.PathLayers, "To define path layers")
+	detectCmd.Flags().StringSliceVarP(&languages, "languages", "L",
 		cfg.Supported, "To define supported languages")
+
+	root.AddCommand(detectCmd)
 }
