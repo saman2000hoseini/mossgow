@@ -19,3 +19,6 @@ Flags:
 -m, --moss string         To define path to moss (default "moss")
 -p, --pathlayers int      To define path layers (default 3)
 ```
+
+* The path layers parameter is really important so make sure it's ok:
+For example the default value is 3 ==> `uploads/*/*/*` <==> `uploads/project3/studentIdX/code.*` 

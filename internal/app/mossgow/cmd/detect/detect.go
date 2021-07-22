@@ -34,7 +34,7 @@ func main(input, moss, baseFile string, layers int, languages []string, cfg conf
 	}
 }
 
-// Register registers server command for virtual-box binary.
+// Register registers server command for mossgow binary.
 func Register(root *cobra.Command, cfg config.Config) {
 	var input, moss, baseFile string
 	var pathLayers int

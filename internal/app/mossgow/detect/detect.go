@@ -16,7 +16,7 @@ const (
 func Detect(path, baseFile string, cfg config.Config) error {
 	pwd, err := os.Getwd()
 	if err != nil {
-		logrus.Fatal(err.Error())
+		return err
 	}
 
 	output := fmt.Sprintf("%s/%s", pwd, cfg.OutputDir)
